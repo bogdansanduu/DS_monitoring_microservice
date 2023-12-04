@@ -16,7 +16,7 @@ import { HourlyConsumption } from './entities/hourlyConsumption.entity';
         name: 'Device_MICROSERVICE_RMQ',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost:5672'],
+          urls: ['amqp://rabbit:rabbit@rabbitmq:5672'],
           queue: 'device',
           queueOptions: {
             durable: false,
@@ -27,6 +27,7 @@ import { HourlyConsumption } from './entities/hourlyConsumption.entity';
         name: 'Device_MICROSERVICE',
         transport: Transport.TCP,
         options: {
+          host: 'host.docker.internal',
           port: parseInt(process.env.DEVICE_MICROSERVICE_PORT),
         },
       },

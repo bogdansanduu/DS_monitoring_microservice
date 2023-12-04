@@ -11,6 +11,7 @@ async function bootstrap() {
     app.connectMicroservice<MicroserviceOptions>({
       transport: Transport.TCP,
       options: {
+        host: '0.0.0.0',
         port: parseInt(process.env.MONITORING_COMMUNICATION_MICROSERVICE_PORT),
       },
     });
@@ -19,7 +20,7 @@ async function bootstrap() {
     app.connectMicroservice<MicroserviceOptions>({
       transport: Transport.RMQ,
       options: {
-        urls: ['amqp://localhost:5672'],
+        urls: ['amqp://rabbit:rabbit@rabbitmq:5672'],
         queue: 'monitoring',
         queueOptions: {
           durable: false,
