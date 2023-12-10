@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { EnergyReading } from './monitoring/entities/energyReading.entity';
 import { HourlyConsumption } from './monitoring/entities/hourlyConsumption.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HourlyConsumption } from './monitoring/entities/hourlyConsumption.entit
       entities: [EnergyReading, HourlyConsumption],
       synchronize: true,
     }),
+    AuthModule,
     MonitoringModule,
   ],
   controllers: [AppController],
